@@ -1,0 +1,708 @@
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+    height: 100%;
+    min-height: 100vh;
+}
+
+:root {
+    /* Modern minimal palette */
+    --bg-primary: #0a0a0a;
+    --bg-secondary: #1a1a1a;
+    --bg-tertiary: #2a2a2a;
+    --surface-glass: rgba(255, 255, 255, 0.05);
+    --surface-glass-hover: rgba(255, 255, 255, 0.08);
+    --surface-card: rgba(255, 255, 255, 0.12);
+    
+    /* Text colors */
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.7);
+    --text-tertiary: rgba(255, 255, 255, 0.5);
+    
+    /* Accent colors */
+    --accent-primary: #007aff;
+    --accent-green: #30d158;
+    --accent-red: #ff453a;
+    --accent-yellow: #ffd60a;
+    --accent-purple: #bf5af2;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --gradient-card: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+    --gradient-glass: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 100%);
+}
+
+body {
+    /* Beautiful purple gradient background like the buttons */
+    background: linear-gradient(135deg, 
+        rgba(102, 126, 234, 0.8) 0%, 
+        rgba(118, 75, 162, 0.8) 25%,
+        rgba(102, 126, 234, 0.6) 50%,
+        rgba(118, 75, 162, 0.9) 75%,
+        rgba(102, 126, 234, 0.7) 100%);
+    background-attachment: fixed;
+    width: 100vw;
+    height: 100vh;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    overflow: hidden;
+    color: var(--text-primary);
+    position: relative;
+}
+
+/* Add animated overlay for depth */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.08) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Hidden class */
+.hidden {
+    display: none !important;
+}
+
+/* Modern glassmorphism welcome screens */
+.welcome-main {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(102, 126, 234, 0.3);
+    backdrop-filter: blur(20px);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.welcome-popup,
+.name-popup {
+    background: var(--gradient-glass);
+    backdrop-filter: blur(30px);
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 48px;
+    max-width: 500px;
+    text-align: center;
+    box-shadow: 
+        0 25px 50px rgba(0, 0, 0, 0.5),
+        0 0 0 1px rgba(255, 255, 255, 0.05);
+    animation: slideUp 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Improved Rules Popup - Better Layout & Responsiveness */
+.rule-popup {
+    background: var(--gradient-glass);
+    backdrop-filter: blur(30px);
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 32px;
+    width: 90vw;
+    max-width: 800px;
+    max-height: 90vh;
+    text-align: center;
+    box-shadow: 
+        0 25px 50px rgba(0, 0, 0, 0.5),
+        0 0 0 1px rgba(255, 255, 255, 0.05);
+    animation: slideUp 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.welcome-popup p,
+.name-popup p {
+    color: var(--text-primary);
+    font-size: 2.4rem;
+    margin-bottom: 32px;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+.rule-popup p {
+    color: var(--text-primary);
+    font-size: 2.2rem;
+    margin-bottom: 24px;
+    font-weight: 600;
+    line-height: 1.3;
+    flex-shrink: 0;
+}
+
+.rule-popup div {
+    text-align: left;
+    margin: 16px 0;
+    color: var(--text-secondary);
+    font-size: 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 20px;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    line-height: 1.6;
+    flex: 1;
+    overflow-y: auto;
+}
+
+/* Ensure button stays visible */
+.rule-popup .play-button {
+    margin-top: 20px;
+    flex-shrink: 0;
+}
+
+/* Modern buttons */
+.start-button,
+.play-button,
+.submit-name-button {
+    background: var(--gradient-primary);
+    color: var(--text-primary);
+    font-size: 1.6rem;
+    font-weight: 600;
+    padding: 16px 32px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-transform: none;
+    letter-spacing: 0;
+    box-shadow: 
+        0 8px 20px rgba(102, 126, 234, 0.3),
+        0 0 0 1px rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.start-button:hover,
+.play-button:hover,
+.submit-name-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 
+        0 12px 24px rgba(102, 126, 234, 0.4),
+        0 0 0 1px rgba(255, 255, 255, 0.2);
+}
+
+.start-button:active,
+.play-button:active,
+.submit-name-button:active {
+    transform: translateY(0);
+}
+
+.name-input {
+    width: 100%;
+    padding: 16px 20px;
+    font-size: 1.6rem;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-primary);
+    margin-bottom: 24px;
+    text-align: center;
+    font-weight: 500;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.name-input:focus {
+    outline: none;
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.3);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.name-input::placeholder {
+    color: var(--text-tertiary);
+}
+
+/* Game container */
+.game-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    padding: 24px;
+    gap: 24px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Player sections */
+.cpu-section,
+.player-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.cpu-label,
+.player-label {
+    background: var(--surface-glass);
+    backdrop-filter: blur(20px);
+    border-radius: 24px;
+    padding: 12px 24px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cpu-label.active-turn {
+    background: var(--accent-primary);
+    color: var(--text-primary);
+    transform: scale(1.02);
+    box-shadow: 0 8px 20px rgba(0, 122, 255, 0.4);
+}
+
+.player-label.active-turn {
+    background: var(--accent-green);
+    color: var(--text-primary);
+    transform: scale(1.02);
+    box-shadow: 0 8px 20px rgba(48, 209, 88, 0.4);
+}
+
+.cpu-label p,
+.player-label p {
+    color: var(--text-primary);
+    font-size: 1.4rem;
+    font-weight: 600;
+    text-transform: capitalize;
+    margin: 0;
+}
+
+.cpu-box,
+.player-box {
+    background: var(--surface-glass);
+    backdrop-filter: blur(20px);
+    padding: 20px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    min-height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cpu-hand,
+.player-hand {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: -20px;
+}
+
+/* Center section */
+.center-section {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 80px;
+    position: relative;
+}
+
+.play-pile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.play-pile-label {
+    background: var(--surface-glass);
+    backdrop-filter: blur(20px);
+    border-radius: 12px;
+    padding: 8px 16px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.play-pile-label p {
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.draw-pile {
+    background: var(--gradient-glass);
+    backdrop-filter: blur(30px);
+    border-radius: 20px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.draw-pile:hover {
+    transform: translateY(-4px);
+    box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.3),
+        0 0 0 1px rgba(255, 255, 255, 0.2);
+    background: var(--surface-glass-hover);
+}
+
+.draw-pile-label p {
+    color: var(--text-primary);
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.draw-pile img {
+    width: 100px !important;
+    height: auto !important;
+    margin-left: 0 !important;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Card styling */
+img {
+    width: 80px;
+    margin-left: -20px;
+    border-radius: 12px;
+    box-shadow: 
+        0 8px 20px rgba(0, 0, 0, 0.4),
+        0 0 0 1px rgba(255, 255, 255, 0.1);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: none;
+    background: transparent;
+    padding: 0;
+}
+
+.player-hand img:hover {
+    transform: scale(1.15) translateY(-20px) rotate(5deg);
+    box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.5),
+        0 0 0 2px rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+    z-index: 10;
+    margin-left: -20px;
+}
+
+.cpu-hand img {
+    filter: brightness(0.7);
+    box-shadow: 
+        0 6px 15px rgba(0, 0, 0, 0.3),
+        0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+/* Fixed Question popup - No more corner glitch! */
+.question-popup {
+    position: fixed !important;
+    z-index: 1000;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    width: 90vw;
+    max-width: 600px;
+    background: var(--gradient-glass);
+    backdrop-filter: blur(30px);
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 40px;
+    text-align: center;
+    box-shadow: 
+        0 25px 50px rgba(0, 0, 0, 0.5),
+        0 0 0 1px rgba(255, 255, 255, 0.05);
+    /* Removed the slideUp animation that was causing the corner glitch */
+    opacity: 0;
+    animation: directFadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* New animation that appears directly at center */
+@keyframes directFadeIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+.question-popup p {
+    color: var(--text-primary);
+    margin-bottom: 32px;
+    font-size: 1.8rem;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+    width: 100%;
+}
+
+.option {
+    background: var(--surface-glass);
+    backdrop-filter: blur(20px);
+    color: var(--text-primary);
+    padding: 16px 24px;
+    border-radius: 12px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    width: 100%;
+    font-size: 1.4rem;
+    font-weight: 500;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    text-align: left;
+}
+
+.option:hover {
+    background: var(--surface-glass-hover);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Color picker */
+.color-picker {
+    position: fixed;
+    z-index: 1000;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--gradient-glass);
+    backdrop-filter: blur(30px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 32px;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 
+        0 25px 50px rgba(0, 0, 0, 0.5),
+        0 0 0 1px rgba(255, 255, 255, 0.05);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.color-picker.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.color-picker p {
+    color: var(--text-primary);
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-bottom: 24px;
+}
+
+.color-picker div {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.color-picker button {
+    padding: 12px 20px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    font-size: 1.4rem;
+}
+
+.color-picker .red {
+    background: var(--accent-red);
+    color: var(--text-primary);
+}
+
+.color-picker .green {
+    background: var(--accent-green);
+    color: var(--text-primary);
+}
+
+.color-picker .blue {
+    background: var(--accent-primary);
+    color: var(--text-primary);
+}
+
+.color-picker .yellow {
+    background: var(--accent-yellow);
+    color: var(--bg-primary);
+}
+
+.color-picker button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* End game popup */
+.end-of-game {
+    position: fixed;
+    z-index: 1000;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--gradient-glass);
+    backdrop-filter: blur(30px);
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 48px;
+    text-align: center;
+    box-shadow: 
+        0 25px 50px rgba(0, 0, 0, 0.5),
+        0 0 0 1px rgba(255, 255, 255, 0.05);
+    min-width: 400px;
+}
+
+.end-of-game p {
+    color: var(--text-primary);
+    font-size: 2.4rem;
+    margin-bottom: 32px;
+    font-weight: 600;
+}
+
+.play-again {
+    background: var(--gradient-primary);
+    color: var(--text-primary);
+    font-size: 1.6rem;
+    font-weight: 600;
+    padding: 16px 32px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 
+        0 8px 20px rgba(102, 126, 234, 0.3),
+        0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+.play-again:hover {
+    transform: translateY(-2px);
+    box-shadow: 
+        0 12px 24px rgba(102, 126, 234, 0.4),
+        0 0 0 1px rgba(255, 255, 255, 0.2);
+}
+
+/* Animations */
+.play-card {
+    animation: modernPlayCard 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes modernPlayCard {
+    0% { 
+        transform: scale(1) translateY(0) rotate(0deg); 
+        opacity: 1;
+    }
+    50% { 
+        transform: scale(1.2) translateY(-40px) rotate(10deg); 
+        opacity: 0.8;
+    }
+    100% { 
+        transform: scale(0.8) translateY(-120px) rotate(15deg); 
+        opacity: 0; 
+    }
+}
+
+.cpu-play-card {
+    animation: modernCpuPlayCard 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes modernCpuPlayCard {
+    0% { 
+        transform: scale(1) translateY(0) rotate(0deg); 
+        opacity: 1;
+    }
+    100% { 
+        transform: scale(0.8) translateY(120px) rotate(-10deg); 
+        opacity: 0; 
+    }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .game-container {
+        padding: 16px;
+        gap: 16px;
+    }
+    
+    .center-section {
+        padding: 0 40px;
+    }
+    
+    img {
+        width: 70px;
+        margin-left: -16px;
+    }
+    
+    .question-popup,
+    .welcome-popup,
+    .name-popup {
+        width: 95vw;
+        padding: 24px;
+    }
+    
+    .rule-popup {
+        width: 95vw;
+        padding: 20px;
+        max-height: 85vh;
+    }
+    
+    .rule-popup p {
+        font-size: 1.8rem;
+        margin-bottom: 16px;
+    }
+    
+    .rule-popup div {
+        font-size: 1.3rem;
+        padding: 16px;
+        margin: 12px 0;
+    }
+    
+    .draw-pile {
+        padding: 16px;
+    }
+}
+
+/* Success/Error feedback */
+.option:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+/* Smooth transitions */
+* {
+    transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
