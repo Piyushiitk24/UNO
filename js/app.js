@@ -614,6 +614,8 @@ const getRandomUnusedQuestion = () => {
 
 // Function to show the correct answer and then continue with game
 const showCorrectAnswer = (correctAnswer, callback) => {
+    loseFX.play() // ADD THIS LINE TO PLAY THE SOUND
+    
     // First disable all buttons to prevent multiple clicks
     optionButtons.forEach(button => {
         button.disabled = true
