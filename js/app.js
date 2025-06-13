@@ -447,82 +447,82 @@ const showTurnOnDom = () => {
 //#region QUESTION LOGIC
 const questions = [
     {
-        question: "Which maxim suggests that students should move from direct observation to deeper reasoning?",
-        options: ["From Simple to Complex", "From Induction to Deduction", "From Empirical to Rational", "From Abstract to Concrete"],
-        correct: "From Empirical to Rational"
+        question: "Which maxim states that students should move from direct observation to deeper reasoning?",
+        options: ["Simple to Complex", "Induction to Deduction", "Empirical to Rational", "Abstract to Concrete"],
+        correct: "Empirical to Rational"
     },
     {
-        question: "Which phase of the basic teaching model involves the teacher delivering new information or content?",
+        question: "Which phase of the Basic Teaching Model involves the teacher delivering new information or content?",
         options: ["Conclusion", "Presentation", "Application", "Evaluation"],
         correct: "Presentation"
     },
     {
-        question: "Which of the following is NOT typically part of the basic teaching model?",
+        question: "Which of the following is NOT part of the Basic Teaching Model?",
         options: ["Introduction", "Application", "Research", "Evaluation"],
         correct: "Research"
     },
     {
-        question: "What does SMART in SMART objectives stand for?",
+        question: "What does SMART in objectives stand for?",
         options: ["Specific, Measurable, Achievable, Relevant, Time-bound", "Simple, Measurable, Achievable, Reliable, Time-bound", "Specific, Measurable, Accurate, Reliable, Time-bound", "Simple, Motivated, Attainable, Relevant, Time-bound"],
         correct: "Specific, Measurable, Achievable, Relevant, Time-bound"
     },
     {
-        question: "Which learning style is best supported by educational technology tools like videos and animations?",
+        question: "Which learning style is best supported by ed-tech tools like videos and animations?",
         options: ["Auditory", "Visual", "Kinesthetic", "Reading/Writing"],
         correct: "Visual"
     },
     {
         question: "What is pedagogy primarily concerned with?",
-        options: ["The study of technology tools", "The art and science of teaching children", "Management of classrooms", "Teaching adults"],
-        correct: "The art and science of teaching children"
+        options: ["Teaching animals", "Teaching children", "Teaching elders", "Teaching adults"],
+        correct: "Teaching children"
     },
     {
-        question: "In a pedagogical approach, who usually directs the learning process?",
+        question: "In a pedagogical approach, who directs the learning process?",
         options: ["The learner", "The community", "The teacher", "Artificial Intelligence"],
         correct: "The teacher"
     },
     {
-        question: "In andragogy, learners are typically:",
+        question: "In Andragogy, learners are typically",
         options: ["Dependent on the teacher", "Passive recipients", "Self-directed", "Uninterested in content"],
         correct: "Self-directed"
     },
     {
-        question: "What is andragogy?",
+        question: "What is Andragogy?",
         options: ["A method of teaching teenagers", "A teaching approach for young children", "The science of teaching adults", "Teaching animals with AI"],
         correct: "The science of teaching adults"
     },
     {
-        question: "Which of the following is the first stage of the memory process?",
+        question: "The first stage of the memory process is:",
         options: ["Retrieval", "Storage", "Encoding", "Application"],
         correct: "Encoding"
     },
     {
-        question: "What is chunking in memory?",
-        options: ["Forgetting data quickly", "Breaking learning into small lessons", "Grouping information to remember it better", "Writing long answers"],
-        correct: "Grouping information to remember it better"
+        question: "Chunking in memory means:",
+        options: ["Forgetting data quickly", "Breaking learning into small lessons", "Grouping information for better memory", "Memorising long answers"],
+        correct: "Grouping information for better memory"
     },
     {
-        question: "Which type of memory is used when solving a math problem mentally?",
+        question: "Solving a math problem mentally involves:",
         options: ["Sensory memory", "Procedural memory", "Working memory", "Long-term memory"],
         correct: "Working memory"
     },
     {
-        question: "The psychomotor domain focuses on:",
+        question: "The psychomotor domain focusses on:",
         options: ["Knowledge retention", "Emotional response", "Physical skills and actions", "Moral reasoning"],
         correct: "Physical skills and actions"
     },
     {
-        question: "What is the main purpose of Bloom's Taxonomy in education?",
+        question: "The main purpose of Bloom's Taxonomy in education is:",
         options: ["To grade students", "To punish incorrect answers", "To classify educational objectives", "To assign homework"],
         correct: "To classify educational objectives"
     },
     {
-        question: "What does SAT stand for in education?",
-        options: ["Student Ability Test", "System Approach to Teaching", "Standard Academic Test", "School Aptitude Technique"],
-        correct: "System Approach to Teaching"
+        question: "SAT stands for:",
+        options: ["Student Ability Test", "System Approach to Training", "Standard Academic Test", "School Aptitude Technique"],
+        correct: "System Approach to Training"
     },
     {
-        question: "The main aim of the system approach is to:",
+        question: "The main aim of the System Approach to training is to:",
         options: ["Increase lecture hours", "Promote casual learning", "Improve teaching effectiveness", "Reduce teacher involvement"],
         correct: "Improve teaching effectiveness"
     },
@@ -537,12 +537,7 @@ const questions = [
         correct: "Student's achievement"
     },
     {
-        question: "Which theory emphasizes learning through rewards and punishments?",
-        options: ["Constructivist theory", "Cognitive theory", "Behaviorist theory", "Humanistic theory"],
-        correct: "Behaviorist theory"
-    },
-    {
-        question: "Which theory emphasizes learning through rewards and punishments?",
+        question: "Learning through rewards and punishments refers to?",
         options: ["Constructivist theory", "Cognitive theory", "Behaviorist theory", "Humanistic theory"],
         correct: "Behaviorist theory"
     },
@@ -553,11 +548,11 @@ const questions = [
     },
     {
         question: "Short-term memory typically retains information for:",
-        options: ["A few seconds", "20–30 seconds", "Several hours", "A lifetime"],
+        options: ["A few seconds", "20–30 seconds", "Several hours", "A few minutes"],
         correct: "20–30 seconds"
     },
     {
-        question: "Which type of memory is responsible for problem-solving and reasoning during tasks?",
+        question: "Memory responsible for problem-solving and reasoning during tasks:",
         options: ["Long-term memory", "Working memory", "Sensory memory", "Semantic memory"],
         correct: "Working memory"
     },
@@ -567,7 +562,7 @@ const questions = [
         correct: "Encoding"
     },
     {
-        question: "The final stage of memory, where learners recall or use the stored information, is known as:",
+        question: "Memory used by learners for recall or use of stored information is:",
         options: ["Encoding", "Storage", "Retrieval", "Attention"],
         correct: "Retrieval"
     },
@@ -577,14 +572,29 @@ const questions = [
         correct: "Semantic memory"
     },
     {
-        question: "Which activity can help improve a learner's attention span?",
+        question: "Which activity can improve learner's attention span?",
         options: ["Long lectures", "Repetitive tasks", "Interactive and varied learning", "Passive reading"],
         correct: "Interactive and varied learning"
     },
     {
         question: "Attention span is influenced by:",
-        options: ["Age and interest level", "Textbook weight", "Number of breaks", "School building size"],
+        options: ["Age and interest level", "Textbook weight", "Number of class breaks", "Trainer"],
         correct: "Age and interest level"
+    },
+    {
+        question: "What role does feedback play in the learning process?",
+        options: ["It replaces assessment", "It reduces teacher workload", "Helps learners assess progress and areas to improve", "To reorganise classroom seating arrangement"],
+        correct: "Helps learners assess progress and areas to improve"
+    },
+    {
+        question: "Blended learning refers to:",
+        options: ["A mix of various learning techniques", "Combining traditional face-to-face instruction with online learning", "A method to discipline students", "Teaching multiple subjects at the same time"],
+        correct: "Combining traditional face-to-face instruction with online learning"
+    },
+    {
+        question: "What is the core of teaching-learning process?",
+        options: ["Instruction", "Feedback", "Interaction", "Discipline"],
+        correct: "Interaction"
     }
 ]
 
