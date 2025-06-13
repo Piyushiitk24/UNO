@@ -242,6 +242,7 @@ body::before {
 .game-container {
     display: flex;
     flex-direction: column;
+    height: 100vh; /* ADD THIS LINE BACK */
     padding: 24px;
     gap: 24px;
     position: relative;
@@ -314,6 +315,7 @@ body::before {
 /* Center section */
 .center-section {
     flex: 1;
+    min-height: 0; /* ADD THIS LINE */
     display: flex;
     justify-content: space-between;
     align-items: center;
