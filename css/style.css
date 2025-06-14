@@ -155,23 +155,67 @@ body::before {
     flex-shrink: 0;
 }
 
-.rule-popup div {
+/* Styles for the main title of the rules popup */
+.rule-popup-title {
+    color: var(--text-primary);
+    font-size: 2.4rem; 
+    font-weight: 600;
+    margin-bottom: 20px; 
+    flex-shrink: 0; /* Keep title visible if content scrolls */
+}
+
+/* Wrapper for the rules content area */
+.rules-content-wrapper {
     text-align: left;
-    margin: 16px 0;
-    color: var(--text-secondary);
-    font-size: 1.7rem; /* Increased from 1.5rem */
-    background: rgba(255, 255, 255, 0.05);
-    padding: 20px;
-    border-radius: 16px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    line-height: 1.6;
-    flex: 1;
-    overflow-y: auto;
+    color: var(--text-secondary); 
+    background: rgba(255, 255, 255, 0.07); /* Slightly more distinct background for content */
+    padding: 25px; /* More padding */
+    border-radius: 18px; /* Softer radius */
+    border: 1px solid rgba(255, 255, 255, 0.15); /* Slightly more visible border */
+    line-height: 1.7; /* Improved line height */
+    flex: 1; 
+    overflow-y: auto; 
+    width: 100%; 
+    margin-bottom: 20px; /* Space before the play button */
+}
+
+/* Introductory text style */
+.rules-intro {
+    font-size: 1.9rem; 
+    color: var(--accent-yellow); /* Make intro stand out */
+    font-weight: 500;
+    margin-bottom: 22px;
+    text-align: center; 
+}
+
+/* Styling for the list of rules */
+.rules-list {
+    list-style-type: none; 
+    padding-left: 0; 
+    font-size: 1.7rem; 
+}
+
+.rules-list li {
+    padding-left: 30px; 
+    position: relative;
+    margin-bottom: 15px; 
+    color: var(--text-primary); 
+}
+
+/* Custom bullet points for the rules */
+.rules-list li::before {
+    content: '🔹'; /* Diamond bullet */
+    position: absolute;
+    left: 0;
+    top: 1px; 
+    color: var(--accent-primary); 
+    font-size: 1.6rem; 
 }
 
 /* Ensure button stays visible */
 .rule-popup .play-button {
-    margin-top: 20px;
+    margin-top: auto; /* Pushes button to bottom if flex container */
+    padding-top: 16px; /* Add some padding if margin-top: auto is not enough */
     flex-shrink: 0;
 }
 
@@ -695,14 +739,25 @@ img {
         margin-bottom: 16px;
     }
     
-    .rule-popup div {
-        font-size: 1.5rem; /* Increased from 1.3rem */
-        padding: 16px;
-        margin: 12px 0;
+    .rule-popup-title {
+        font-size: 2.0rem; 
+        margin-bottom: 16px;
     }
-    
-    .draw-pile {
-        padding: 16px;
+    .rules-content-wrapper {
+        padding: 20px; /* Adjust padding for mobile */
+    }
+    .rules-intro {
+        font-size: 1.7rem; /* Adjust for mobile */
+        margin-bottom: 18px;
+    }
+    .rules-list li {
+        font-size: 1.5rem; /* Adjust for mobile */
+        padding-left: 25px; 
+        margin-bottom: 12px;
+    }
+    .rules-list li::before {
+        font-size: 1.4rem; 
+        top: 0px;
     }
 }
 
