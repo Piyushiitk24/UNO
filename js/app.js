@@ -1083,7 +1083,7 @@ const showNamePopup = () => {
     submitNameButton.addEventListener('click', () => {
         playCardFX2.play() // Add click sound
         const inputName = nameInput.value.trim()
-        playerName = inputName.length > 0 ? capitalizeFirstLetter(inputName) : 'Player'
+        playerName = inputName.length > 0 ? capitalizeFirstLetter(inputName).toUpperCase() : 'LT I M SMART' // Convert to ALL CAPS
         playerNameLabel.textContent = playerName
         namePopup.classList.add('hidden')
         document.querySelector('.welcome-main').style.display = 'none'
