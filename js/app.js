@@ -21,7 +21,8 @@ const playButton = document.querySelector('.play-button')
 const namePopup = document.querySelector('.name-popup')
 const nameInput = document.querySelector('.name-input')
 const submitNameButton = document.querySelector('.submit-name-button')
-const playerNameLabel = document.querySelector('.player-name-label')
+// Correct the selector for playerNameLabel:
+const playerNameLabel = document.querySelector('.player-label p') // Changed from '.player-name-label'
 
 // hand arrays
 const cpuHand = []
