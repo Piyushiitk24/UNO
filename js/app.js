@@ -1063,7 +1063,7 @@ const playPlayerCard = (index) => {
 const showWelcomePopup = () => {
     welcomePopup.classList.remove('hidden')
     startButton.addEventListener('click', () => {
-        playCardFX2.play() // Add click sound
+        playCardFX2.play() 
         welcomePopup.classList.add('hidden')
         showRulePopup()
     }, { once: true })
@@ -1072,7 +1072,7 @@ const showWelcomePopup = () => {
 const showRulePopup = () => {
     rulePopup.classList.remove('hidden')
     playButton.addEventListener('click', () => {
-        playCardFX2.play() // Add click sound
+        playCardFX2.play() 
         rulePopup.classList.add('hidden')
         showNamePopup()
     }, { once: true })
@@ -1081,13 +1081,20 @@ const showRulePopup = () => {
 const showNamePopup = () => {
     namePopup.classList.remove('hidden')
     submitNameButton.addEventListener('click', () => {
-        playCardFX2.play() // Add click sound
+        playCardFX2.play() 
         const inputName = nameInput.value.trim()
-        // Ensure player name is ALL CAPS, default to 'PLAYER'
+        // Player name is uppercased here
         playerName = inputName.length > 0 ? inputName.toUpperCase() : 'PLAYER' 
-        playerNameLabel.textContent = playerName // playerNameLabel will also be styled with text-transform: uppercase
+        if (playerNameLabel) { // Check if playerNameLabel exists
+            playerNameLabel.textContent = playerName 
+        } else {
+            console.error("Error: playerNameLabel element not found.");
+        }
         namePopup.classList.add('hidden')
-        document.querySelector('.welcome-main').style.display = 'none'
+        const welcomeMain = document.querySelector('.welcome-main');
+        if (welcomeMain) {
+            welcomeMain.style.display = 'none';
+        }
         gameOn = true
         newHand()
         if (!playerTurn) setTimeout(playCPU, cpuDelay)
@@ -1097,10 +1104,13 @@ const showNamePopup = () => {
 
 //#region ///////MAIN GAME FUNCTION////////
 const startGame = () => {
-    // Set CPU name to COMPUTER at the start of the game
+    console.log("startGame function called"); // Debug log
+
+    // Set CPU name to COMPUTER
     const cpuLabelParagraph = document.querySelector('.cpu-label p');
     if (cpuLabelParagraph) {
-        cpuLabelParagraph.textContent = 'COMPUTER'; // Set text to "COMPUTER"
+        cpuLabelParagraph.textContent = 'COMPUTER'; // This sets the text to "COMPUTER"
+        console.log("CPU name set to:", cpuLabelParagraph.textContent); // Debug log
     } else {
         console.error("UNO Game Error: The element '.cpu-label p' for CPU's name was not found. CPU name not updated.");
     }
@@ -1111,9 +1121,9 @@ const startGame = () => {
     } 
 
     listenForDevMode();
-    setInterval(showTurnOnDom, 100);
+    setInterval(showTurnOnDom, 100); // This function should only manage classes, not text content
     showWelcomePopup();
-    setupColorPickerListeners()
+    setupColorPickerListeners();
 
     playerHandDom.addEventListener('click', (event) => {
         if (playerTurn && !colorPickerIsOpen && !questionActive && event.target.getAttribute('id')) {
@@ -1226,3 +1236,8 @@ const capitalizeFirstLetter = (string) => {
     return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase()
 }
 //#endregion
+
+// CRITICAL: Ensure this line is at the VERY END of your js/app.js file to start the game.
+// If it's wrapped in a DOMContentLoaded listener elsewhere, ensure that listener is firing correctly.
+// For simplicity and to ensure it runs after the script is parsed:
+startGame();

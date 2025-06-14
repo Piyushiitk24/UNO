@@ -36,8 +36,8 @@
     <div class="game-container">
         <!-- Opponent Section -->
         <div class="cpu-section">
-            <div class='cpu-label'>
-                <p>🤖 Opponent</p>
+            <div class='cpu-label'> <!-- Parent div with class 'cpu-label' -->
+                <p>🤖 Opponent</p>   <!-- The p tag that JS and CSS target. Initial text. -->
             </div>
             <div class='cpu-box'>
                 <div class='cpu-hand'>
@@ -121,32 +121,21 @@
     <script src="js/app.js"></script>
     <script>
         window.addEventListener('DOMContentLoaded', () => {
-          const welcomeMain = document.querySelector('.welcome-main');
           const welcomePopup = document.querySelector('.welcome-popup');
-          const rulePopup = document.querySelector('.rule-popup');
-          const namePopup = document.querySelector('.name-popup');
-          const startButton = document.querySelector('.start-button');
-          const playButton = document.querySelector('.play-button');
-          const submitNameButton = document.querySelector('.submit-name-button');
+          const welcomeMain = document.querySelector('.welcome-main'); // Get welcomeMain
 
-          // Show welcome popup initially
-          welcomePopup.classList.remove('hidden');
-          welcomeMain.classList.add('active');
-
-          // Show rules popup when START GAME clicked
-          startButton.addEventListener('click', () => {
-            welcomeMain.classList.add('active');
-          });
-
-          // Show name popup when READY TO PLAY clicked
-          playButton.addEventListener('click', () => {
-            welcomeMain.classList.add('active');
-          });
-
-          // Hide all popups when SUBMIT clicked
-          submitNameButton.addEventListener('click', () => {
-            welcomeMain.classList.remove('active');
-          });
+          // Show welcome popup initially. app.js will attach button listeners.
+          if (welcomePopup) {
+            welcomePopup.classList.remove('hidden');
+          }
+          // If welcomeMain exists, ensure it's visible initially for the popups.
+          // app.js will hide it later via .style.display = 'none' in showNamePopup.
+          if (welcomeMain && welcomeMain.classList.contains('hidden')) { // Optional: if it might start hidden
+             // welcomeMain.classList.remove('hidden'); // Or ensure it's not display:none
+          }
+          // The event listeners for startButton, playButton, and submitNameButton
+          // that were previously in this inline script are now fully handled by app.js,
+          // so they have been removed from here to prevent conflicts.
         });
     </script>
 </body>

@@ -285,9 +285,9 @@ body::before {
 .cpu-label p,
 .player-label p {
     color: var(--text-primary);
-    font-size: 1.6rem; /* Increased from 1.4rem */
+    font-size: 1.6rem; 
     font-weight: 600;
-    text-transform: uppercase; /* Ensure player names are ALL CAPS */
+    text-transform: uppercase; /* This is the key for ALL CAPS */
     margin: 0;
 }
 
