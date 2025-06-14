@@ -1,111 +1,233 @@
-# UNO Card Game (1v1):flower_playing_cards:
-**UNO** is an American shedding-type card game that is played with a specially printed deck. The game's general principles put it into the crazy eights family of card games, and it is similar to the traditional European game mau-mau. It has been a Mattel brand since 1992.
+# UNO - THE QUIZMASTER EDITION 🧠🃏
 
-🔴 Technologies used, **HTML, CSS, JS**
+**UNO - The Quizmaster Edition** takes the classic card game you love and supercharges it with a fun, educational twist! Test your knowledge of the Teaching-Learning Process while you try to outsmart the COMPUTER and be the first to empty your hand. This version features a sleek glassmorphism UI, engaging animations, and interactive quiz elements seamlessly woven into the gameplay.
 
-<img src="head.png">
+🔴 **Technologies Used:** HTML5, CSS3, JavaScript (ES6)
 
+---
 
-# Welcome to UNO!:peanuts:
-[![forthebadge play-here-uno](play-here-uno.svg)](https://abhisheks008.github.io/UNO/) <img src="https://github.com/abhisheks008/UNO/blob/main/images/uno!.png" height="60px">
+✨ **Live Demo** ✨
 
-# How this game works:hourglass:
+[![Play Game Now!] (/Users/piyushtiwari/For_Projects/NIETT/UNO/play-here-uno.svg)
+(https://piyushiitk24.github.io/UNO/)
 
-- The game will start automatically upon loading.
+---
 
-- The player and the CPU will each begin with 7 cards, and a number card will begin the Play Pile. The player will go first. The player can either click on a card of matching value or color to play it, play an Action Card (Reverse, Skip, Draw 2, Draw 4, Wild), or if no playable cards are available, click on the Draw Pile for a new card and forfeit their turn.
+<p align="center">
+  <img src="head.png" alt="UNO Quizmaster Edition Gameplay" width="800">
+</p>
 
-- Next the CPU will play, either playing an appropriate card or taking one from the Draw Pile.
+---
 
-- Draw 2 (+2) and Draw 4 (+4) cards will automatically add their amount to the victim's hand and advance the turn. Reverse and Skip cards will both skip the victim's turn (since there are only two players, Reverse essentially becomes a Skip). Wild cards may be played at any time.
+## 🚀 Welcome to UNO - The Quizmaster Edition!
 
-- The immediate goal is to be the first one to have no cards, at which time the opposing player's cards will be totaled and added to their score according to the following rules:
-   >numbered cards 0-9 = face value </br>
-   >Reverse, Skip, +2 = 20pts</br>
-   >Wild, Wild +4 = 50pts
+Get ready for a unique UNO experience where strategy meets knowledge! This isn't just about matching colors and numbers; your understanding of educational concepts will be your greatest asset.
 
-- **The first player to reach 100 loses the game.**
+## 🎮 How This Game Works
 
+The core objective remains the same: be the first player to get rid of all your cards. However, the "Quizmaster Edition" introduces special rules tied to questions about the Teaching-Learning Process:
 
-## Algorithm and Workflow :abacus:
+#### 1.  **Game Start**
+* The game prompts you for your name. The opponent is the "COMPUTER".
+* Both you and the COMPUTER start with 7 cards.
+* The player (you) goes first.
 
-Number Cards are straight forward:
-```js
-red8 = { <br>
-    value: 8,<br>
-    point: 8,<br>
-    color: 'red',<br>
-    changeTurn: true,<br>
-    drawValue: 0<br>
-}
-```
+#### 2.  **Basic Gameplay**
+* On your turn, match the top card on the Play Pile by **color** or **number**.
+* You can also play an **Action Card** (Reverse, Skip, Draw 2) or a **Wild Card**.
+* If you can't play a card,# UNO - THE QUIZMASTER EDITION 🧠🃏
 
-Action Cards will be assigned a value for the sake of logic comparisons, in ascending order of danger to the CPU in the event it loses:
-```js
-greenReverse = {<br>
-    value: 10,<br>
-    point: 20,<br>
-    color: 'green',<br>
-    changeTurn: false,<br>
-    drawValue: 0<br>
-}
+**UNO - The Quizmaster Edition** takes the classic card game you love and supercharges it with a fun, educational twist! Test your knowledge of the Teaching-Learning Process while you try to outsmart the COMPUTER and be the first to empty your hand. This version features a sleek glassmorphism UI, engaging animations, and interactive quiz elements seamlessly woven into the gameplay.
 
-orangeSkip = {<br>
-    value: 11,<br>
-    point: 20,<br>
-    color: 'yellow',<br>
-    changeTurn: false,<br>
-    drawValue: 0<br>
-}
+🔴 **Technologies Used:** HTML5, CSS3, JavaScript (ES6)
 
-blueDraw2 = {<br>
-    value: 12,<br>
-    point: 20,<br>
-    color: 'blue',<br>
-    changeTurn: true,<br>
-    drawValue: 2<br>
-}
+---
 
-wild = {<br>
-    value: 13,<br>
-    point: 50,<br>
-    color: 'any',<br>
-    changeTurn: true,<br>
-    drawValue: 0<br>
-}
+✨ **Live Demo** ✨
 
-wild4 = {<br>
-    value: 14,<br>
-    point: 50,<br>
-    color: 'any',<br>
-    changeTurn: true,<br>
-    drawValue: 4<br>
-}
-```
-- The gameController will use the changeTurn and drawValue properties to determine whose turn it is and whether or not any cards need to be drawn.
+[![Play Game Now!](https://img.shields.io/badge/Play%20Game%20Now!-Click%20Here-brightgreen?style=for-the-badge&logo=githubpages)](https://piyushiitk24.github.io/UNO/)
 
-## How CPU is playing!:computer:
-The CPU will have two arrays it keeps track of two arrays:
-```js
-cpuHand = []
-playableCards = []
-```
+---
 
-Based on the last card played and it's properties, the CPU will loop through it's cpuHand array, and any card that matches either the value or color of the last card played will be pushed into the playableCards array along with any wilds the CPU may be holding.
+<p align="center">
+  <img src="images/main_game.png" alt="UNO Quizmaster Edition Gameplay" width="800">
+</p>
 
-Since part of the fun and strategy is knowing when to play your Action Cards, the CPU will randomize their strategy each turn, determined by a Math.Random() variable. If the randomizer is above 0.5, the CPU will prioritize playing Action Cards in an effort to keep their losing score low. If the randomizer is below 0.5, the CPU will hold onto their Action Cards for a later turn and instead play Number Cards. There will also be logic to skip the randomizer once the player gets below a certain number of cards, at which point the CPU will only prioritize Action Cards.
+---
 
+## 🚀 Welcome to UNO - The Quizmaster Edition!
 
-## How the Player feels!:red_haired_woman::man:
-Similar to how the computer will keep track of which cards it can play, so will the gameController do for the player. Should the player click an invalid card, a message will pop up telling the player so. 
+Get ready for a unique UNO experience where strategy meets knowledge! This isn't just about matching colors and numbers; your understanding of educational concepts will be your greatest asset.
 
-These messages and the Game Over screen will be the only on screen prompts in an effort to minimize distractions and allow the flow of the game to take front and center.
+## 🎮 How This Game Works
 
-(In an effort to protect against unintended clicks, there might be an "Are you sure?" message if the player clicks the Draw Pile while holding playable cards.)
+The core objective remains the same: be the first player to get rid of all your cards. However, the "Quizmaster Edition" introduces special rules tied to questions about the Teaching-Learning Process:
 
-The goal is to create an aesthetically pleasing, minimal-yet-satisfying game loop that is relaxing and entertaining and that - hopefully - users will want to play again and again.
+#### 1.  **Game Start**
+* The game prompts you for your name. The opponent is the "COMPUTER".
+* Both you and the COMPUTER start with 7 cards.
+* The player (you) goes first.
 
----------------------------------------------
+#### 2.  **Basic Gameplay**
+* On your turn, match the top card on the Play Pile by **color** or **number**.
+* You can also play an **Action Card** (Reverse, Skip, Draw 2) or a **Wild Card**.
+* If you can't play a card, click the "Draw Deck" to draw one card, which ends your turn.
 
-### ©️ Code Contributed by, Abhishek Sharma, 2022 :link: <a href = "https://github.com/abhisheks008"> abhisheks008 </a>
-#### Show some :heart: if you like it!
+#### 3.  **🧠 The Quizmaster Twist!**
+* **Escaping CPU's Cards:** If the COMPUTER plays an Action Card, a Wild Card, or an Even Numbered card on you, a question popup will appear!
+    * ✅ **Answer Correctly:** You nullify the card's effect and the COMPUTER's turn is wasted!
+    * ❌ **Answer Incorrectly:** You suffer the card's penalty (e.g., draw cards, skip turn). For Action/Wild cards, you draw **one extra card**, and for Even Number cards, you draw **two extra cards**.
+
+#### 4.  **Winning the Game**
+* The first player to empty their hand wins!
+* When a player is down to their last card, the game automatically announces "UNO!".
+* Each game is a fresh start; there is no cumulative scoring.
+
+---
+## 📸 Screenshots
+
+| Welcome Screen | Game Rules | Name Submission |
+| :---: | :---: | :---: |
+| <img src="images/welcome_game.png" alt="Welcome Screen" width="250"> | <img src="images/rules.png" alt="Game Rules" width="250"> | <img src="images/submit_name.png" alt="Submit Name" width="250"> |
+
+| Main Gameplay | Question Popup |
+| :---: | :---: |
+| <img src="images/main_game.png" alt="Main Gameplay" width="400"> | <img src="images/question_popup.png" alt="Question Popup" width="400"> |
+
+---
+
+## ✨ Features & Player Experience
+
+* **Sleek Glassmorphism UI:** A modern and visually appealing interface with a cohesive purple gradient theme.
+* **Interactive Effects:** Cards and buttons provide satisfying visual feedback on hover.
+* **Engaging Animations:** Smooth animations for playing cards, drawing cards, and "UNO!" shouts.
+* **Sound Effects:** Audio cues for all major game actions.
+* **Responsive Design:** The interface adapts for enjoyable play on both desktop and mobile devices.
+* **Quiz Integration:** Educational questions add a unique challenge and learning opportunity. Questions are cycled and won't repeat until the entire pool has been used.
+
+---
+## 🤖 How the COMPUTER Plays!
+
+The COMPUTER isn't just playing random cards! It uses a dynamic strategy:
+
+* **Identifies Playable Cards:** It scans its hand for all valid moves.
+* **Strategic Decision:** It may play aggressively with high-value Action Cards if you have few cards left, or play conservatively to save its power plays for later.
+* **Smart Color Choice:** When playing a Wild card, it intelligently picks the color that is most common in its remaining hand.
+
+---
+
+## 🛠️ Developer Mode / Keyboard Shortcuts
+
+For testing or fun, you can use these keyboard shortcuts during the game:
+
+* **P:** Force it to be the **P**layer's turn.
+* **C:** **C**PU draws a card.
+* **X:** Player discards the last card from their hand.
+* **Z:** CPU discards the last card from its hand.
+* **W:** Player receives a regular **W**ild card.
+* **4:** Player receives a Wild Draw **4** card.
+* **S:** Toggle visibility of the CPU's cards (**S**how/Hide).
+
+---
+
+## 🔧 Setup & How to Play Locally
+
+While the game is best played online via the live demo link, you can also run it locally.
+
+1.  **Clone the repository:**
+    ```bash
+    git clone [https://github.com/Piyushiitk24/UNO.git](https://github.com/Piyushiitk24/UNO.git)
+    ```
+2.  **Navigate to the project directory:**
+    ```bash
+    cd UNO
+    ```
+3.  **Run with a local server (Recommended):**
+    * For the best experience (and to ensure all sounds and images load correctly), run `index.html` through a local server.
+    * The easiest way is with the **Live Server** extension in Visual Studio Code.
+
+---
+## 🙏 Acknowledgements
+
+* This project is an enhanced "Quizmaster Edition" based on the original UNO game logic and structure by **Abhishek Sharma** ([@abhisheks008](https://github.com/abhisheks008)).
+* The current version, including the UI overhaul, quiz integration, and numerous enhancements, was developed by **Piyushi** ([@Piyushiitk24](https://github.com/Piyushiitk24)).
+
+#### Show some ❤️ by starring the repository if you like this enhanced version! click the "Draw Deck" to draw one card, which ends your turn.
+
+#### 3.  **🧠 The Quizmaster Twist!**
+* **Escaping CPU's Cards:** If the COMPUTER plays an Action Card, a Wild Card, or an Even Numbered card on you, a question popup will appear!
+    * ✅ **Answer Correctly:** You nullify the card's effect and the COMPUTER's turn is wasted!
+    * ❌ **Answer Incorrectly:** You suffer the card's penalty (e.g., draw cards, skip turn). For Action/Wild cards, you draw **one extra card**, and for Even Number cards, you draw **two extra cards**.
+
+#### 4.  **Winning the Game**
+* The first player to empty their hand wins!
+* When a player is down to their last card, the game automatically announces "UNO!".
+* Each game is a fresh start; there is no cumulative scoring.
+
+---
+
+## 🃏 Special Card Effects
+
+* **Draw 2 (+2):** Opponent draws 2 cards and forfeits their turn (unless quizzed correctly!).
+* **Reverse/Skip:** In a 1v1 game, both act as a Skip. The opponent forfeits their turn (unless quizzed correctly!).
+* **Wild Card:** Change the current color.
+* **Wild Draw 4 (+4):** Change the color AND force the opponent to draw 4 cards (unless quizzed correctly!).
+
+---
+## 🤖 How the COMPUTER Plays!
+
+The COMPUTER uses a dynamic strategy to challenge you:
+
+* **Identifies Playable Cards:** It scans its hand for all valid moves.
+* **Strategic Decision:** A random factor influences its choice. It may play aggressively with high-value Action Cards if you have few cards left, or play conservatively with low-number cards to save its power plays for later.
+* **Smart Color Choice:** When playing a Wild card, it intelligently picks the color that is most common in its remaining hand.
+
+---
+
+## ✨ Features & Player Experience
+
+* **Sleek Glassmorphism UI:** A modern and visually appealing interface with a cohesive purple gradient theme.
+* **Interactive Effects:** Cards and buttons provide satisfying visual feedback on hover.
+* **Engaging Animations:** Smooth animations for playing cards, drawing cards, and "UNO!" shouts.
+* **Sound Effects:** Audio cues for all major game actions.
+* **Responsive Design:** The interface adapts for enjoyable play on both desktop and mobile devices.
+* **Quiz Integration:** Educational questions add a unique challenge and learning opportunity. Questions are cycled and won't repeat until the entire pool has been used.
+
+---
+## 🛠️ Developer Mode / Keyboard Shortcuts
+
+For testing or fun, you can use these keyboard shortcuts during the game:
+
+* **P:** Force it to be the **P**layer's turn.
+* **C:** **C**PU draws a card.
+* **X:** Player discards the last card from their hand.
+* **Z:** CPU discards the last card from its hand.
+* **W:** Player receives a regular **W**ild card.
+* **4:** Player receives a Wild Draw **4** card.
+* **S:** Toggle visibility of the CPU's cards (**S**how/Hide).
+
+---
+
+## 🔧 Setup & How to Play Locally
+
+While the game is best played online via the live demo link, you can also run it locally.
+
+1.  **Clone the repository:**
+    ```bash
+    git clone [https://github.com/Piyushiitk24/UNO.git](https://github.com/Piyushiitk24/UNO.git)
+    ```
+2.  **Navigate to the project directory:**
+    ```bash
+    cd UNO
+    ```
+3.  **Run with a local server (Recommended):**
+    * For the best experience (and to ensure all sounds and images load correctly), run `index.html` through a local server.
+    * The easiest way is with the **Live Server** extension in Visual Studio Code.
+
+---
+## 🙏 Acknowledgements
+
+* This project is an enhanced "Quizmaster Edition" based on the original UNO game logic and structure by **Abhishek Sharma** ([@abhisheks008](https://github.com/abhisheks008)).
+* The current version, including the UI overhaul, quiz integration, and numerous enhancements, was developed by **Piyushi** ([@Piyushiitk24](https://github.com/Piyushiitk24)).
+
+#### Show some ❤️ by starring the repository if you like this enhanced version!
