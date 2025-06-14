@@ -1097,14 +1097,22 @@ const showNamePopup = () => {
 
 //#region ///////MAIN GAME FUNCTION////////
 const startGame = () => {
+    // Set CPU name to COMPUTER at the start of the game
+    const cpuLabelParagraph = document.querySelector('.cpu-label p');
+    if (cpuLabelParagraph) {
+        cpuLabelParagraph.textContent = 'COMPUTER'; // Set text to "COMPUTER"
+    } else {
+        console.error("UNO Game Error: The element '.cpu-label p' for CPU's name was not found. CPU name not updated.");
+    }
+
     if (!preLoaded) {
         preLoadImgs()
         preLoaded = true
     } 
 
-    listenForDevMode()
-    setInterval(showTurnOnDom, 100)
-    showWelcomePopup()
+    listenForDevMode();
+    setInterval(showTurnOnDom, 100);
+    showWelcomePopup();
     setupColorPickerListeners()
 
     playerHandDom.addEventListener('click', (event) => {
@@ -1218,14 +1226,3 @@ const capitalizeFirstLetter = (string) => {
     return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase()
 }
 //#endregion
-
-//#region // DOM AND GLOBAL VARIABLES
-const cpuNameLabel = document.querySelector('.cpu-label p') // Get the CPU name label
-const playerNameLabel = document.querySelector('.player-label p') // Get the player name label
-
-// Set CPU name to 'COMPUTER' (will also be styled with text-transform: uppercase)
-if (cpuNameLabel) {
-    cpuNameLabel.textContent = 'COMPUTER'
-}
-
-startGame()
