@@ -187,7 +187,7 @@ body::before {
     border-radius: 12px;
     border: none;
     cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease-out; /* Ensure smooth glow */
     text-transform: none; /* Button text itself is not uppercased by default */
     letter-spacing: 0;
     box-shadow: 
@@ -202,8 +202,9 @@ body::before {
 .submit-name-button:hover {
     transform: translateY(-2px);
     box-shadow: 
-        0 12px 24px rgba(102, 126, 234, 0.4),
-        0 0 0 1px rgba(255, 255, 255, 0.2);
+        0 12px 24px rgba(102, 126, 234, 0.4),  /* Existing accent shadow */
+        0 0 0 1px rgba(255, 255, 255, 0.2),    /* Existing border-like highlight */
+        0 0 12px 3px rgba(255, 255, 255, 0.35); /* Added white glow */
 }
 
 .start-button:active,
@@ -230,7 +231,8 @@ body::before {
 .name-input:focus {
     outline: none;
     border-color: var(--accent-primary);
-    box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.3);
+    /* Existing focus glow is good, let's ensure it's distinct */
+    box-shadow: 0 0 8px 4px rgba(0, 122, 255, 0.4); /* Slightly enhanced glow */
     background: rgba(255, 255, 255, 0.08);
 }
 
@@ -366,8 +368,9 @@ body::before {
 .draw-pile:hover {
     transform: translateY(-4px);
     box-shadow: 
-        0 20px 40px rgba(0, 0, 0, 0.3),
-        0 0 0 1px rgba(255, 255, 255, 0.2);
+        0 20px 40px rgba(0, 0, 0, 0.3),       /* Existing depth shadow */
+        0 0 0 1px rgba(255, 255, 255, 0.2), /* Existing highlight */
+        0 0 15px 4px rgba(255, 255, 255, 0.3);/* Added white glow */
     background: var(--surface-glass-hover);
 }
 
@@ -406,8 +409,9 @@ img {
 .player-hand img:hover {
     transform: scale(1.15) translateY(-20px) rotate(5deg);
     box-shadow: 
-        0 20px 40px rgba(0, 0, 0, 0.5),
-        0 0 0 2px rgba(255, 255, 255, 0.2);
+        0 20px 40px rgba(0, 0, 0, 0.5),       /* Existing depth shadow */
+        0 0 0 2px rgba(255, 255, 255, 0.3), /* Brighter border highlight */
+        0 0 15px 3px rgba(255, 255, 255, 0.25);/* Subtle glow for cards */
     cursor: pointer;
     z-index: 10;
     margin-left: -20px;
@@ -477,7 +481,7 @@ img {
     color: var(--text-primary);
     padding: 16px 24px;
     border-radius: 12px;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease-out; /* Ensure smooth glow */
     width: 100%;
     font-size: 1.6rem; 
     font-weight: 500;
@@ -488,10 +492,12 @@ img {
 
 /* Added hover effect for question options */
 .option:hover {
-    background: var(--surface-glass-hover); /* Uses rgba(255, 255, 255, 0.08) */
-    border-color: rgba(255, 255, 255, 0.25);
-    transform: translateY(-3px) scale(1.02); /* Subtle lift and scale */
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35); /* Enhanced shadow for pop effect */
+    background: var(--surface-glass-hover);
+    border-color: rgba(255, 255, 255, 0.35); /* Brighter border */
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 
+        0 10px 25px rgba(0, 0, 0, 0.35),      /* Existing shadow for depth */
+        0 0 12px 3px rgba(255, 255, 255, 0.45); /* Enhanced white glow for options */
 }
 
 .color-picker {
@@ -539,7 +545,7 @@ img {
     border: 1px solid rgba(255, 255, 255, 0.2);
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.3s ease, box-shadow 0.3s ease-out; /* Ensure smooth glow */
     backdrop-filter: blur(10px);
     font-size: 1.6rem; /* Increased from 1.4rem */
 }
@@ -566,7 +572,9 @@ img {
 
 .color-picker button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    box-shadow: 
+        0 8px 20px rgba(0, 0, 0, 0.3),        /* Existing depth shadow */
+        0 0 10px 2px rgba(255, 255, 255, 0.4); /* Added white glow */
 }
 
 /* End game popup */
@@ -604,7 +612,7 @@ img {
     border-radius: 12px;
     border: none;
     cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease-out; /* Ensure smooth glow */
     box-shadow: 
         0 8px 20px rgba(102, 126, 234, 0.3),
         0 0 0 1px rgba(255, 255, 255, 0.1);
@@ -613,8 +621,9 @@ img {
 .play-again:hover {
     transform: translateY(-2px);
     box-shadow: 
-        0 12px 24px rgba(102, 126, 234, 0.4),
-        0 0 0 1px rgba(255, 255, 255, 0.2);
+        0 12px 24px rgba(102, 126, 234, 0.4),  /* Existing accent shadow */
+        0 0 0 1px rgba(255, 255, 255, 0.2),    /* Existing border-like highlight */
+        0 0 12px 3px rgba(255, 255, 255, 0.35); /* Added white glow */
 }
 
 /* Animations */
