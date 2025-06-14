@@ -420,7 +420,7 @@ img {
         0 0 0 1px rgba(255, 255, 255, 0.05);
 }
 
-/* Fixed Question popup - No more corner glitch! */
+/* Fixed Question popup - Improved Readability & Layout */
 .question-popup {
     position: fixed !important;
     z-index: 1000;
@@ -428,17 +428,17 @@ img {
     left: 50% !important;
     transform: translate(-50%, -50%) !important;
     width: 90vw;
-    max-width: 600px;
-    background: var(--gradient-glass);
-    backdrop-filter: blur(30px);
+    max-width: 700px; /* Increased max-width for better horizontal space utilization */
+    /* Adjusted background for better contrast and readability while maintaining glassmorphism */
+    background: linear-gradient(135deg, rgba(40, 40, 60, 0.75) 0%, rgba(30, 30, 50, 0.65) 100%); 
+    backdrop-filter: blur(25px); /* Increased blur for better separation from background */
     border-radius: 24px;
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Slightly more prominent border */
     padding: 40px;
     text-align: center;
     box-shadow: 
         0 25px 50px rgba(0, 0, 0, 0.5),
         0 0 0 1px rgba(255, 255, 255, 0.05);
-    /* Removed the slideUp animation that was causing the corner glitch */
     opacity: 0;
     animation: directFadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
@@ -479,11 +479,19 @@ img {
     border-radius: 12px;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     width: 100%;
-    font-size: 1.6rem; /* Increased from 1.4rem */
+    font-size: 1.6rem; 
     font-weight: 500;
     border: 1px solid rgba(255, 255, 255, 0.1);
     cursor: pointer;
     text-align: left;
+}
+
+/* Added hover effect for question options */
+.option:hover {
+    background: var(--surface-glass-hover); /* Uses rgba(255, 255, 255, 0.08) */
+    border-color: rgba(255, 255, 255, 0.25);
+    transform: translateY(-3px) scale(1.02); /* Subtle lift and scale */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35); /* Enhanced shadow for pop effect */
 }
 
 .color-picker {
