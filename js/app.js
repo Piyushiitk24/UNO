@@ -1083,8 +1083,9 @@ const showNamePopup = () => {
     submitNameButton.addEventListener('click', () => {
         playCardFX2.play() // Add click sound
         const inputName = nameInput.value.trim()
-        playerName = inputName.length > 0 ? capitalizeFirstLetter(inputName).toUpperCase() : 'LT I M SMART' // Convert to ALL CAPS
-        playerNameLabel.textContent = playerName
+        // Ensure player name is ALL CAPS, default to 'PLAYER'
+        playerName = inputName.length > 0 ? inputName.toUpperCase() : 'PLAYER' 
+        playerNameLabel.textContent = playerName // playerNameLabel will also be styled with text-transform: uppercase
         namePopup.classList.add('hidden')
         document.querySelector('.welcome-main').style.display = 'none'
         gameOn = true
@@ -1217,5 +1218,14 @@ const capitalizeFirstLetter = (string) => {
     return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase()
 }
 //#endregion
+
+//#region // DOM AND GLOBAL VARIABLES
+const cpuNameLabel = document.querySelector('.cpu-label p') // Get the CPU name label
+const playerNameLabel = document.querySelector('.player-label p') // Get the player name label
+
+// Set CPU name to 'COMPUTER' (will also be styled with text-transform: uppercase)
+if (cpuNameLabel) {
+    cpuNameLabel.textContent = 'COMPUTER'
+}
 
 startGame()
