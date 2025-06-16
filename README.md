@@ -107,6 +107,6 @@ While the game is best played online via the live demo link, you can also run it
 ## 🙏 Acknowledgements
 
 * This project is an enhanced "Quizmaster Edition" based on the original UNO game logic and structure by **Abhishek Sharma** ([@abhisheks008](https://github.com/abhisheks008)).
-* The current version, including the UI overhaul, quiz integration, and numerous enhancements, was developed by **Piyushi** ([@Piyushiitk24](https://github.com/Piyushiitk24)).
+* The current version, including the UI overhaul, quiz integration, and numerous enhancements, was developed by **Piyush** ([@Piyushiitk24](https://github.com/Piyushiitk24)).
 
 #### Show some ❤️ by starring the repository if you like this enhanced version!
